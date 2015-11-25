@@ -29,6 +29,7 @@
     "test": "grunt nodeunit"
   },
   "dependencies": {
+  	"mysql": "latest",
     "underscore":"latest"
   },
   "devDependencies": {

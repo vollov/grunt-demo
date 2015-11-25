@@ -11,6 +11,11 @@ grunt_demo.awesome(); // "awesome"
 ```
 git remote set-url origin git@github.com:vollov/grunt-demo.git
 
+
+### Database
+CREATE DATABASE gruntd CHARACTER SET utf8;
+CREATE DATABASE gruntd_test CHARACTER SET utf8;
+
 ## Documentation
 _(Coming soon)_
 
