@@ -9,6 +9,7 @@ Install the module with: `npm install grunt-demo`
 var grunt_demo = require('grunt-demo');
 grunt_demo.awesome(); // "awesome"
 ```
+git remote set-url origin git@github.com:vollov/grunt-demo.git
 
 ## Documentation
 _(Coming soon)_

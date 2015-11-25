@@ -14,8 +14,9 @@ exports.testConfig = {
 	'test removeFields' : function(test) {
 		var result = this.utils.removeFields(this.docs, 'pwd');
 		var expected  = [{"name":"Kayak","_id":"54a4d108228799901cb889e5"},
-		                 {"name":"Lifejacket","_id":"54a4d108228799901cb889e6"}]
-		test.equal(result, expected, 'pwd field should be removed.');
+		                 {"_id":"54a4d108228799901cb889e6","name":"Lifejacket"}]
+		var compare_result = this.utils.isEqual(result, expected);
+		test.ok(compare_result, 'pwd field should be removed.');
 		test.done();
 	},
 };
