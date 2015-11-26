@@ -23,3 +23,24 @@ connection.query('select * from db.table;', function(err, results, fields) {
 
     connection.end();
 });
+
+
+////////////
+An example is given in here
+
+var mysql = require('node-mysql');
+var conn = mysql.createConnection({
+    ...
+});
+
+var sql = "INSERT INTO Test (name, email, n) VALUES ?";
+var values = [
+    ['demian', 'demian@gmail.com', 1],
+    ['john', 'john@gmail.com', 2],
+    ['mark', 'mark@gmail.com', 3],
+    ['pete', 'pete@gmail.com', 4]
+];
+conn.query(sql, [values], function(err) {
+    if (err) throw err;
+    conn.end();
+});
