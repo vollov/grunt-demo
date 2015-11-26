@@ -5,8 +5,8 @@ var Config = require('../lib/config');
 
 exports.testDB = {
 	setUp : function(done) {
-		var config = Config().getTestConfig()
-		this.db = DB(config);
+		var db_config = Config().getDBConfig('test')
+		this.db = DB(db_config);
 		done();
 	},
 	'test Database connection' : function(test) {

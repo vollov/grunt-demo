@@ -8,7 +8,7 @@ exports.testConfig = {
 		done();
 	},
 	'test config db_name' : function(test) {
-		var config = Config().getProdConfig()
+		var config = Config().getDBConfig('prod')
 
 		test.equal(config.db_name, 'gruntd', 'db_name should be gruntd.');
 		test.done();

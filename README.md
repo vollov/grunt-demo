@@ -16,6 +16,11 @@ git remote set-url origin git@github.com:vollov/grunt-demo.git
 CREATE DATABASE gruntd CHARACTER SET utf8;
 CREATE DATABASE gruntd_test CHARACTER SET utf8;
 
+### npm proxy
+npm config set proxy http://localhost:3128
+npm config set https-proxy http://localhost:3128
+npm config set registry http://registry.npmjs.org
+
 ## Documentation
 _(Coming soon)_
 

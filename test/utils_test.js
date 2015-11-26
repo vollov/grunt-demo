@@ -1,11 +1,10 @@
 'use strict';
-
 var Utils = require('../lib/utils');
 
-exports.testConfig = {
+exports.testUtils = {
 	
 	setUp : function(done) {
-		// setup here
+
 		this.utils = Utils();
 		this.docs = [{"_id":"54a4d108228799901cb889e5","name":"Kayak", "pwd":"aaa"},
 		    		 {"_id":"54a4d108228799901cb889e6","name":"Lifejacket", "pwd":"aaa"}]
@@ -18,5 +17,5 @@ exports.testConfig = {
 		var compare_result = this.utils.isEqual(result, expected);
 		test.ok(compare_result, 'pwd field should be removed.');
 		test.done();
-	},
+	}
 };

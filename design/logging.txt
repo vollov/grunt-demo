@@ -1,0 +1,76 @@
+https://github.com/winstonjs/winston
+
+	var logger = new (winston.Logger)({
+		transports : [ new (winston.transports.File)({
+			name : 'debug-file',
+			filename : path.join(log_dir,'debug.log'),
+			level : 'debug'
+		}), new (winston.transports.File)({
+			name : 'error-file',
+			filename : path.join(log_dir,'error.log'),
+			level : 'error'
+		}) ]
+	});
+	
+var winston = require('winston');
+
+var logger = new (winston.Logger)({
+  transports: [
+    new (winston.transports.Console)({ json: false, timestamp: true }),
+    new winston.transports.File({ filename: __dirname + '/debug.log', json: false })
+  ],
+  exceptionHandlers: [
+    new (winston.transports.Console)({ json: false, timestamp: true }),
+    new winston.transports.File({ filename: __dirname + '/exceptions.log', json: false })
+  ],
+  exitOnError: false
+});
+
+module.exports = logger;
+You can then use this like:
+
+var logger = require('./log');
+
+logger.info('log to file');
+
+=================
+https://github.com/trentm/node-bunyan
+
+			var log = bunyan.createLogger({
+				name : name,
+				streams : [ {
+					level : 'info',
+					stream : process.stdout
+				// log INFO and above to stdout
+				}, {
+					level : 'error',
+					path : path.join(log_dir, 'error.log'), // log ERROR and above to a file
+				}, {
+					level : 'debug',
+					path : path.join(log_dir, 'debug.log'), // log DEBUG and above to a file
+				} ]
+			});
+			
+$ node myapp.js  | bunyan -o short
+07:46:42.707Z  INFO myapp: start
+07:46:42.709Z  INFO myapp: creating a wuzzle (widget_type=wuzzle)
+07:46:42.709Z  WARN myapp: This wuzzle is woosey. (widget_type=wuzzle)
+07:46:42.709Z  INFO myapp: done
+
+> type C:\opt\var\www\gruntd\debug.log | node_modules\.bin\bunyan 
+Bunyan log output is a stream of JSON objects. This is great for processing, but not for reading directly. A bunyan tool is provided for pretty-printing bunyan logs and for filtering (e.g. | bunyan -c 'this.foo == "bar"'). Using our example above:
+
+$ node hi.js | ./bin/bunyan
+[2013-01-04T19:01:18.241Z]  INFO: myapp/40208 on banana.local: hi
+[2013-01-04T19:01:18.242Z]  WARN: myapp/40208 on banana.local: au revoir (lang=fr)
+See the screenshot above for an example of the default coloring of rendered log output. That example also shows the nice formatting automatically done for some well-known log record fields (e.g. req is formatted like an HTTP request, res like an HTTP response, err like an error stack trace).
+
+One interesting feature is filtering of log content, which can be useful for digging through large log files or for analysis. We can filter only records above a certain level:
+
+$ node hi.js | bunyan -l warn
+[2013-01-04T19:08:37.182Z]  WARN: myapp/40353 on banana.local: au revoir (lang=fr)
+Or filter on the JSON fields in the records (e.g. only showing the French records in our contrived example):
+
+$ node hi.js | bunyan -c 'this.lang == "fr"'
+[2013-01-04T19:08:26.411Z]  WARN: myapp/40342 on banana.local: au revoir (lang=fr)
+See bunyan --help for other facilities.

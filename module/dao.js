@@ -4,21 +4,32 @@
  */
 
 var DB = require('../lib/db');
-
+var Log = require('../lib/logging');
+var mysql = require('mysql');
 
 module.exports = function(config) {
 	
 	var db = DB(config);
-		
+	var log = Log().getLog('dao');
+	
 	return {
 		/**
-		 * query table
+		 * query table: sql, callback
+		 * 
+		 * SELECT [fields] from [table] where [condition]
+		 *  e.g.
+		 * var sql = "SELECT a,b,c FROM t1 WHERE ?? = ?";
+		 * var filters = ['id', userId];
+		 * sql = mysql.format(sql, filters);
+
 		 */
-		query: function(table_name, sql, callback){
+		query: function(sql, filters, fields, callback ){
 			db.connect(function(err, connection){
-				connection.query('SELECT * FROM ' + table, function(err, results, fields) {
+				var sql_string =  mysql.format(sql, filters);
+				log.debug('query() sql_string=:' + sql_string);
+				connection.query(sql_string, function(err, rows, fields) {
 					connection.release();
-					callback(err, results, fields);
+					callback(err, rows);
 				});
 			});
 		},
