@@ -1,14 +1,2 @@
-[{"name":"user","create":"CREATE TABLE user (
-  id INT(10) UNSIGNED NOT NULL auto_increment,
-  name VARCHAR(32) NOT NULL UNIQUE,
-  email VARCHAR(128) NOT NULL UNIQUE,
-  password BINARY(32) NOT NULL,
-  role VARCHAR(8) NOT NULL,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8"},
-{"name":"resource","create":"CREATE TABLE resource (
-  id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  code varchar(32) NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY code (code)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8"}]
+{"user":"CREATE TABLE user (id INT(10) UNSIGNED NOT NULL auto_increment, name VARCHAR(32) NOT NULL UNIQUE, email VARCHAR(128) NOT NULL UNIQUE, password BINARY(32) NOT NULL, role VARCHAR(8) NOT NULL, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8",
+"resource":"CREATE TABLE resource (id int(10) unsigned NOT NULL AUTO_INCREMENT, code varchar(32) NOT NULL, PRIMARY KEY (id), UNIQUE KEY code (code)) ENGINE=InnoDB DEFAULT CHARSET=utf8"}
