@@ -21,7 +21,6 @@ module.exports = function(config) {
 		 * var sql = "SELECT a,b,c FROM t1 WHERE ?? = ?";
 		 * var filters = ['id', userId];
 		 * sql = mysql.format(sql, filters);
-
 		 */
 		query: function(sql, filters, fields, callback ){
 			db.connect(function(err, connection){

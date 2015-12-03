@@ -1,0 +1,6 @@
+create Article	-- POST /articles with Payload
+update Article	-- PUT /articles/123 with Payload
+delete Article	-- DELETE /articles/123 
+view Article	-- GET /article/123
+
+

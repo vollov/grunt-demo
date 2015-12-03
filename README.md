@@ -2,6 +2,14 @@
 
 demo app run grunt
 
+git clone https://github.com/gruntjs/grunt-init-gruntfile
+git clone https://github.com/gruntjs/grunt-init-node
+
+ls ~/.grunt-init
+grunt-init node --force
+
+
+
 ## Getting Started
 Install the module with: `npm install grunt-demo`
 
@@ -21,6 +29,7 @@ npm config set proxy http://localhost:3128
 npm config set https-proxy http://localhost:3128
 npm config set registry http://registry.npmjs.org
 
+npm install grunt-cli
 ## Documentation
 _(Coming soon)_
 
